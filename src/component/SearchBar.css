@@ -1,0 +1,22 @@
+.search-bar {
+    display: flex;
+    width: 100%;
+    background-color: rgb(32, 29, 29);
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.search-input {
+    width: 40%;
+    height: 40px;
+    border-radius: 8px;
+    padding-left: 20px;
+    /* border: 1px white solid; */
+}
+
+.search-button {
+    height: 40px;
+    border-radius: 20px;
+    padding: 0 20px;
+}

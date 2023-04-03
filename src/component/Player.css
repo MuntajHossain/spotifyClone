@@ -1,0 +1,57 @@
+
+.player {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    height: 4rem;
+    padding: 0 8px;
+    color: white;
+    background-color: rgb(78, 76, 76);
+    border-radius: 8px;
+    /* margin: 4px; */
+    position: absolute;  
+    bottom: 4rem;
+    left: 0px;
+}
+.img-container {
+    width: 3rem;
+    height: 3rem;
+    overflow: hidden;
+    position: relative;
+    margin: 4px;
+    border-radius: 50%;
+}
+
+.thumbnail {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.track-info {
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex:1
+}
+.track-info span {
+    display: block;
+    text-align: start;
+}
+
+.track-title{
+    font-weight: 800;
+    font-size: small;
+}
+
+.track-singer{
+    font-size: small;
+}
+
+
