@@ -16,26 +16,24 @@ function Search() {
         <>
             <SearchBar handleData={setSearchData} />
             <div className="multiple-content-holder">
-                <div className="container-area">
-                    {searchData && (
-                        <MediaHolder
-                            name="Artists"
-                            data={searchData.albums.items}
-                        />
-                    )}
-                    {searchData && (
-                        <MediaHolder
-                            name="Albums"
-                            data={searchData.artists.items}
-                        />
-                    )}
-                    {searchData && (
-                        <MediaHolder
-                            name="PlayList"
-                            data={searchData.playlists.items}
-                        />
-                    )}
-                </div>
+                {searchData && (
+                    <MediaHolder
+                        name="Artists"
+                        data={searchData.albums.items}
+                    />
+                )}
+                {searchData && (
+                    <MediaHolder
+                        name="Albums"
+                        data={searchData.artists.items}
+                    />
+                )}
+                {searchData && (
+                    <MediaHolder
+                        name="PlayList"
+                        data={searchData.playlists.items}
+                    />
+                )}
             </div>
             <div className="control-holders">
                 <Player />
