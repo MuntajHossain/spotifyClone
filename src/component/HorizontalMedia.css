@@ -21,12 +21,18 @@
     height: var(--siz);
     overflow: hidden;
     margin-bottom: 1rem;
-    /* position: relative; */
+    position: relative;
     border-radius: 8px;
 }
 
 .media__image > img {
-    object-fit: cover;
+    width: var(--siz);
+    height: var(--siz);
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .media__body {
@@ -35,6 +41,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     width: var(--siz);
+    margin-bottom: 1.5rem;
 }
 
 .media__body__title {

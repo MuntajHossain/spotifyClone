@@ -10,10 +10,10 @@ function HorizontalMedia(props) {
     // console.log(`rendering Vertical Media`)
     useEffect(() => {
         if (props.img.images[1] !== undefined) {
-            setImgSrc(props.img.images[2].url);
+            setImgSrc(props.img.images[1].url);
         } else {
-            console.log("in else");
-            console.log(props.img.images);
+            // console.log("in else");
+            // console.log(props.img.images);
         }
         setName(props.img.name);
         // console.log(props.img);
@@ -31,7 +31,7 @@ function HorizontalMedia(props) {
             </div>
             <div className="media__body">
                 <span className="media__body__title">{name}</span>
-                <span className="media__body__subtitle">google</span>
+                {/* <span className="media__body__subtitle">google</span> */}
             </div>
         </div>
     );

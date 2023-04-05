@@ -9,29 +9,40 @@ import "./MediaHolder.css";
 function MediaHolder(props) {
     let access_token = useContext(tokenContext);
     const [singers, setSingers] = useState([]);
+    console.log(props.data);
 
     useEffect(() => {
         // console.log("in use effect");
         // console.log(access_token);
-        var param = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + access_token,
-            },
-        };
-        fetch(
-            "https://api.spotify.com/v1/search?q=lata mangeskar&type=artist ",
-            param
-        )
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                if (data.artists.items) {
-                    setSingers(data.artists.items);
-                }
-            });
-    }, []);
+        if (props.data === undefined) {
+            console.log("props data not sent");
+            var param = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + access_token,
+                },
+            };
+            fetch(
+                "https://api.spotify.com/v1/search?q=lata mangeskar&type=artist ",
+                param
+            )
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    console.log(access_token);
+                    if (data.artists.items) {
+                        setSingers(data.artists.items);
+                    }
+                });
+        } else {
+            console.log("props data has been sent");
+            setSingers(props.data);
+        }
+    }, [props.data, access_token]);
+    useEffect(() => {
+        console.log(singers);
+    }, [singers]);
 
     const MediaCards = singers.map((item) => {
         // console.log(item.images);
@@ -42,8 +53,8 @@ function MediaHolder(props) {
             />
         );
     });
-    console.log(MediaCards);
-    console.log("element is being rendered");
+    // console.log(MediaCards);
+    // console.log("element is being rendered");
     return (
         <div className="media-list">
             <div className="media-list__title">
