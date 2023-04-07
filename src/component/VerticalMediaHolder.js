@@ -2,11 +2,10 @@ import React from "react";
 import { useEffect, useContext } from "react";
 import VerticalMedia from "./VerticalMedia";
 import "./VerticalMediaHolder.css";
-import { tokenContext } from "../App";
 import { useState } from "react";
 
-function VerticalMediaHolder(props) {
-    const access_token = useContext(tokenContext);
+function VerticalMediaHolder({ name, access_token }) {
+    // const access_token = useContext(tokenContext);
 
     const [data, setData] = useState();
     const [showMore, setShowMore] = useState(false);
@@ -59,7 +58,7 @@ function VerticalMediaHolder(props) {
     };
     return (
         <div className="vertical-holder-wrapper">
-            <div className="verticle-holder-title">{props.name}</div>
+            <div className="verticle-holder-title">{name}</div>
             <div className="vertical-holder">{partialData}</div>
             <div className="show-more-less">
                 <span onClick={showMoreHandler}>

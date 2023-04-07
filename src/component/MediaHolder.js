@@ -5,44 +5,35 @@ import { useEffect } from "react";
 import { tokenContext } from "../App";
 import HorizontalMedia from "./HorizontalMedia";
 import "./MediaHolder.css";
+import useSpotifyData from "./useSpotifyData";
 
 function MediaHolder(props) {
     let access_token = useContext(tokenContext);
     const [singers, setSingers] = useState([]);
     console.log(props.data);
+    const [isBusy, myData, setUseData] = useSpotifyData(access_token);
 
     useEffect(() => {
         // console.log("in use effect");
         // console.log(access_token);
         if (props.data === undefined) {
             console.log("props data not sent");
-            var param = {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + access_token,
-                },
-            };
-            fetch(
-                "https://api.spotify.com/v1/search?q=lata mangeskar&type=artist ",
-                param
-            )
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data);
-                    console.log(access_token);
-                    if (data.artists.items) {
-                        setSingers(data.artists.items);
-                    }
-                });
+
+            setUseData(
+                "https://api.spotify.com/v1/search?q=lata mangeskar&type=artist "
+            );
         } else {
             console.log("props data has been sent");
             setSingers(props.data);
         }
-    }, [props.data, access_token]);
+    }, [props.data, access_token, setUseData]);
+
     useEffect(() => {
-        console.log(singers);
-    }, [singers]);
+        console.log(myData);
+        if (myData) {
+            setSingers(myData.artists.items);
+        }
+    }, [myData]);
 
     const MediaCards = singers.map((item) => {
         // console.log(item.images);
@@ -60,16 +51,7 @@ function MediaHolder(props) {
             <div className="media-list__title">
                 <span> {props.name}</span>
             </div>
-            <div className="media-holder">
-                {MediaCards}
-                {/* <HorizontalMedia />
-                <HorizontalMedia />
-                <HorizontalMedia />
-                <HorizontalMedia />
-                <HorizontalMedia />
-                <HorizontalMedia />
-                <HorizontalMedia /> */}
-            </div>
+            <div className="media-holder">{MediaCards}</div>
         </div>
     );
 }

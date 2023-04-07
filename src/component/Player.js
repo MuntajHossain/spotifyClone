@@ -38,4 +38,4 @@ function Player(props) {
     );
 }
 
-export default Player;
+export default React.memo(Player);

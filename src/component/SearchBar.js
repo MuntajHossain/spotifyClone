@@ -3,14 +3,17 @@ import { useContext } from "react";
 import { tokenContext } from "../App";
 import "./SearchBar.css";
 
-function SearchBar(props) {
+function SearchBar({ searchDataHandler, access_token }) {
     const inputRef = React.createRef();
-    const access_token = useContext(tokenContext);
-    console.log(props.handleData);
+    // const access_token = useContext(tokenContext);
+    // console.log(props.handleData);
 
     useEffect(() => {
         inputRef.current.focus();
     }, []);
+    useEffect(() => {
+        console.log(access_token);
+    }, [access_token]);
 
     const clickHandler = () => {
         const searchQuery = inputRef.current.value;
@@ -32,7 +35,7 @@ function SearchBar(props) {
                 console.log(data);
                 console.log(access_token);
                 if (data) {
-                    props.handleData(data);
+                    searchDataHandler(data);
                 }
             });
     };
